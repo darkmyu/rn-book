@@ -1,12 +1,11 @@
 import React from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import Greeting from './src/components/Greeting';
 
 function App() {
   return (
     <SafeAreaView>
-      <View>
-        <Text>Hello React!</Text>
-      </View>
+      <Greeting name="bammyu" />
     </SafeAreaView>
   );
 }
