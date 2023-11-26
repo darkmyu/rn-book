@@ -1,11 +1,11 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import Greeting from './src/components/Greeting';
+import Box from './src/components/Box';
 
 function App() {
   return (
     <SafeAreaView>
-      <Greeting name="bammyu" />
+      <Box isRounded={true} size="large" />
     </SafeAreaView>
   );
 }
