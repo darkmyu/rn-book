@@ -1,6 +1,7 @@
 import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 import {Todo} from '../App';
+import TodoItem from './TodoItem';
 
 interface Props {
   todos: Todo[];
@@ -12,9 +13,7 @@ function TodoList({todos}: Props) {
       style={styles.list}
       data={todos}
       renderItem={({item}) => (
-        <View>
-          <Text>{item.text}</Text>
-        </View>
+        <TodoItem id={item.id} text={item.text} done={item.done} />
       )}
       keyExtractor={item => item.id.toString()}
     />
