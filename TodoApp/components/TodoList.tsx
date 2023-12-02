@@ -6,9 +6,10 @@ import TodoItem from './TodoItem';
 interface Props {
   todos: Todo[];
   onToggle(id: number): void;
+  onRemove(id: number): void;
 }
 
-function TodoList({todos, onToggle}: Props) {
+function TodoList({todos, onToggle, onRemove}: Props) {
   return (
     <FlatList
       ItemSeparatorComponent={() => <View style={styles.separator} />}
@@ -20,6 +21,7 @@ function TodoList({todos, onToggle}: Props) {
           text={item.text}
           done={item.done}
           onToggle={onToggle}
+          onRemove={onRemove}
         />
       )}
       keyExtractor={item => item.id.toString()}
