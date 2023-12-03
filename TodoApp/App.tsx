@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {KeyboardAvoidingView, Platform, StyleSheet} from 'react-native';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import AddTodo from './components/AddTodo';
 import DateHead from './components/DateHead';
 import Empty from './components/Empty';
 import TodoList from './components/TodoList';
+import {todosStorage} from './storages/todoStorages';
 
 export interface Todo {
   id: number;
@@ -20,6 +21,14 @@ function App() {
     {id: 2, text: '리액트 네이티브 기초 공부', done: false},
     {id: 3, text: '투두리스트 만들어보기', done: false},
   ]);
+
+  useEffect(() => {
+    todosStorage.get().then(setTodos).catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    todosStorage.set(todos).catch(console.error);
+  }, [todos]);
 
   const onInsert = (text: string) => {
     const nextId =
