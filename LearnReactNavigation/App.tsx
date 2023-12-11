@@ -45,9 +45,21 @@ function App() {
       <Drawer.Navigator
         initialRouteName="Home"
         backBehavior="history"
-        screenOptions={{drawerPosition: 'left'}}>
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Setting" component={SettingScreen} />
+        screenOptions={{
+          drawerPosition: 'left',
+          drawerActiveTintColor: 'white',
+          drawerActiveBackgroundColor: '#fb8c00',
+        }}>
+        <Drawer.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{title: '홈'}}
+        />
+        <Drawer.Screen
+          name="Setting"
+          component={SettingScreen}
+          options={{title: '설정'}}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );
