@@ -1,66 +1,42 @@
-import {
-  DrawerScreenProps,
-  createDrawerNavigator,
-} from '@react-navigation/drawer';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {Button, Text, View} from 'react-native';
+import {Text} from 'react-native';
 
-type DrawerParamList = {
+type TabParamList = {
   Home: undefined;
-  Setting: undefined;
+  Search: undefined;
+  Notification: undefined;
+  Message: undefined;
 };
 
-type HomeScreenProps = DrawerScreenProps<DrawerParamList, 'Home'>;
+const Tab = createBottomTabNavigator<TabParamList>();
 
-type SettingScreenProps = DrawerScreenProps<DrawerParamList, 'Setting'>;
-
-const Drawer = createDrawerNavigator<DrawerParamList>();
-
-function HomeScreen({navigation}: HomeScreenProps) {
-  return (
-    <View>
-      <Text>Home</Text>
-      <Button title="Drawer 열기" onPress={() => navigation.openDrawer()} />
-      <Button
-        title="Setting 열기"
-        onPress={() => navigation.navigate('Setting')}
-      />
-    </View>
-  );
+function HomeScreen() {
+  return <Text>Home</Text>;
 }
 
-function SettingScreen({navigation}: SettingScreenProps) {
-  return (
-    <View>
-      <Text>Setting</Text>
-      <Button title="뒤로가기" onPress={() => navigation.goBack()} />
-    </View>
-  );
+function SearchScreen() {
+  return <Text>Search</Text>;
+}
+
+function NotificationScreen() {
+  return <Text>Notification</Text>;
+}
+
+function MessageScreen() {
+  return <Text>Message</Text>;
 }
 
 function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        backBehavior="history"
-        screenOptions={{
-          drawerPosition: 'left',
-          drawerActiveTintColor: 'white',
-          drawerActiveBackgroundColor: '#fb8c00',
-        }}>
-        <Drawer.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{title: '홈'}}
-        />
-        <Drawer.Screen
-          name="Setting"
-          component={SettingScreen}
-          options={{title: '설정'}}
-        />
-      </Drawer.Navigator>
+      <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Search" component={SearchScreen} />
+        <Tab.Screen name="Notification" component={NotificationScreen} />
+        <Tab.Screen name="Message" component={MessageScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
