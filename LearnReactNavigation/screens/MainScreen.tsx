@@ -18,7 +18,7 @@ type RootTabParamList = {
 
 type HomeScreenProps = CompositeScreenProps<
   BottomTabScreenProps<RootTabParamList, 'Home'>,
-  NativeStackScreenProps<RootStackParamList, 'Detail'>
+  NativeStackScreenProps<RootStackParamList>
 >;
 
 function HomeScreen({navigation}: HomeScreenProps) {
