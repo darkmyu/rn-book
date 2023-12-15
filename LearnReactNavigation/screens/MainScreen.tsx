@@ -1,7 +1,5 @@
-import {
-  BottomTabScreenProps,
-  createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {CompositeScreenProps} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
@@ -57,7 +55,7 @@ function MessageScreen() {
   );
 }
 
-const Tab = createBottomTabNavigator<RootTabParamList>();
+const Tab = createMaterialTopTabNavigator<RootTabParamList>();
 
 function MainScreen() {
   return (
@@ -65,16 +63,13 @@ function MainScreen() {
       initialRouteName="Home"
       screenOptions={{
         tabBarShowLabel: false,
-        tabBarActiveTintColor: '#fb8c00',
       }}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
           title: '홈',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="home" color={color} size={size} />
-          ),
+          tabBarIcon: ({color}) => <Icon name="home" color={color} size={24} />,
         }}
       />
       <Tab.Screen
@@ -82,8 +77,8 @@ function MainScreen() {
         component={SearchScreen}
         options={{
           title: '검색',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="search" color={color} size={size} />
+          tabBarIcon: ({color}) => (
+            <Icon name="search" color={color} size={24} />
           ),
         }}
       />
@@ -92,8 +87,8 @@ function MainScreen() {
         component={NotificationScreen}
         options={{
           title: '알림',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="notifications" color={color} size={size} />
+          tabBarIcon: ({color}) => (
+            <Icon name="notifications" color={color} size={24} />
           ),
         }}
       />
@@ -102,8 +97,8 @@ function MainScreen() {
         component={MessageScreen}
         options={{
           title: '메시지',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="message" color={color} size={size} />
+          tabBarIcon: ({color}) => (
+            <Icon name="message" color={color} size={24} />
           ),
         }}
       />
